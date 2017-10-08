@@ -2,9 +2,28 @@
 
 <?php 
     if(array_key_exists('cadastrado', $_REQUEST)){
-        if($_REQUEST['cadastrado']==false){
+        if($_REQUEST['cadastrado']=='ambos'){
 ?>
-    <p class="text-center alert alert-danger msg">Usuario existente, por favor tente outro nome de usuario</p>
+    <p class="text-center alert alert-danger msg">Este nome de usuário e email já existem, por favor tente outra combinação</p>
+<?php
+        }
+    }
+?>
+
+<?php 
+    if(array_key_exists('cadastrado', $_REQUEST)){
+        if($_REQUEST['cadastrado']=='usuarioExistente'){
+?>
+    <p class="text-center alert alert-danger msg">Este nome de usuário já existe, por favor tente outro nome</p>
+<?php
+        }
+    }
+?>
+<?php 
+    if(array_key_exists('cadastrado', $_REQUEST)){
+        if($_REQUEST['cadastrado']=='emailExistente'){
+?>
+    <p class="text-center alert alert-danger msg">Este email já existe, por favor tente outro email</p>
 <?php
         }
     }
@@ -17,14 +36,20 @@
 <br>
     <form action="cadastraUsuario.php" method="POST">
         <div class="form-group">
-            <label for="">User:</label>
+            <label for="">Usuário:</label>
             <input class="form-control" type="text" name="usuario">
         </div>    
 
         <div class="form-group">
-            <label for="">Password:</label>
+            <label for="">Senha:</label>
             <input class="form-control" type="password" name="senha">
         </div>
+
+        <div class="form-group">
+            <label for="">Email:</label>
+            <input class="form-control" type="email" name="email">
+        </div>
+
         <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
     <br>
@@ -39,7 +64,7 @@
             event.preventDefault();
         };
     });
-    setTimeout(()=>document.querySelector('.msg').remove(),4000);
+    setTimeout(()=>document.querySelector('.msg').remove(),5000);
 </script>
     
 <?php require_once "html-estrutura/rodape.php"; ?>
