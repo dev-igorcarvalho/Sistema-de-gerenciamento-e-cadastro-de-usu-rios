@@ -9,15 +9,15 @@ class UsuarioDao
     }
 
     function existeUsuario($usuario) {
-        $usuario = mysqli_real_escape_string($this->conexao, $usuario);
-        $query = "SELECT * FROM usuarios WHERE usuario='{$usuario}'";
+        $nome = mysqli_real_escape_string($this->conexao, $usuario->getNome());
+        $query = "SELECT * FROM usuarios WHERE usuario='{$nome}'";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
         return mysqli_fetch_assoc($resultado);
     }
 
-    function existeEmail($email) {
-        $email = mysqli_real_escape_string($this->conexao, $email);
+    function existeEmail($usuario) {
+        $email = mysqli_real_escape_string($this->conexao, $usuario->getEmail());
         $query = "SELECT * FROM usuarios WHERE email='{$email}'";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
@@ -25,12 +25,12 @@ class UsuarioDao
        
     }
 
-    function cadastra($usuario, $senha, $email) {
-        $usuario = mysqli_real_escape_string($this->conexao, $usuario);
-        $senha = mysqli_real_escape_string($this->conexao, $senha);
-        $senha = md5($senha);
-        $email = mysqli_real_escape_string($this->conexao, $email);
-        $query = "INSERT INTO usuarios (usuario, senha, email) VALUES ('{$usuario}', '{$senha}', '{$email}')";
+    function cadastra($usuario) {
+        $nome = mysqli_real_escape_string($this->conexao, $usuario->getNome());
+        $senha = mysqli_real_escape_string($this->conexao, $usuario->getSenha());
+        $senhaMd5 = md5($senha);
+        $email = mysqli_real_escape_string($this->conexao, $usuario->getEmail());
+        $query = "INSERT INTO usuarios (usuario, senha, email) VALUES ('{$nome}', '{$senhaMd5}', '{$email}')";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
         return $resultado;

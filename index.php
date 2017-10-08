@@ -18,19 +18,19 @@
 <br>
     <form action="login.php" method="POST">
         <div class="form-group">
-            <label for="">User:</label>
+            <label for="">Usuário:</label>
             <input class="form-control" type="text" name="usuario">
         </div>    
 
         <div class="form-group">
-            <label for="">Password:</label>
+            <label for="">Senha:</label>
             <input class="form-control" type="password" name="senha">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
     <br>
-    <p><a href="cadastro.php">Sign Up</a></p> 
-    <a href="url">Forgot your password?</a>
+    <p><a href="cadastro.php">Cadastre-se</a></p> 
+    <a href="url">Esqueceu a senha?</a>
 </div>
 
 

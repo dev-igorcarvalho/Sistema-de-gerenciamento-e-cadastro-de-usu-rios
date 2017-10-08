@@ -1,4 +1,20 @@
-<?php require_once "html-estrutura/cabecalho.php"; ?>
+<?php 
+require_once "html-estrutura/cabecalho.php"; 
+
+$usuario = $_REQUEST['usuario'];
+$senha = $_REQUEST['senha'];
+$email = $_REQUEST['email'];
+?>
+
+<?php 
+    if(array_key_exists('campoEmBranco', $_REQUEST)){
+        if($_REQUEST['campoEmBranco']==true){
+?>
+    <p class="text-center alert alert-danger msg">Preencha todos os campos</p>
+<?php
+        }
+    }
+?>
 
 <?php 
     if(array_key_exists('cadastrado', $_REQUEST)){
@@ -29,15 +45,17 @@
     }
 ?>
 
+
+
 <div class="jumbotron">
 
-<h2>Sign Up:</h2>
+<h2>Cadastro:</h2>
 
 <br>
     <form action="cadastraUsuario.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="usuario">
+            <input class="form-control" type="text" name="usuario" value="">
         </div>    
 
         <div class="form-group">
@@ -50,11 +68,10 @@
             <input class="form-control" type="email" name="email">
         </div>
 
-        <button type="submit" class="btn btn-primary">Sign up</button>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
     <br>
     
-    <a href="url">Forgot your password?</a>
 </div>
 
 <script>
