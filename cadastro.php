@@ -55,7 +55,7 @@ $email = $_REQUEST['email'];
     <form action="cadastraUsuario.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="usuario" value="">
+            <input class="form-control" type="text" name="nome" value="">
         </div>    
 
         <div class="form-group">

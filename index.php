@@ -19,7 +19,7 @@
     <form action="login.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="usuario">
+            <input class="form-control" type="text" name="nome">
         </div>    
 
         <div class="form-group">

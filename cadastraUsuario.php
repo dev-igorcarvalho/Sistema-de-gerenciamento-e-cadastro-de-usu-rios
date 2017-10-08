@@ -4,15 +4,10 @@ require_once "autoload.php";
 
 $usuario = new Usuario();
 
-$usuario->setNome($_REQUEST['usuario']);
+$usuario->setNome($_REQUEST['nome']);
 $usuario->setSenha($_REQUEST['senha']);
 $usuario->setEmail($_REQUEST['email']);
 
-/*
-$usuario = $_REQUEST['usuario'];
-$senha = $_REQUEST['senha'];
-$email = $_REQUEST['email'];
-*/
 
 $usuarioDao = new UsuarioDao($conexao);
 
