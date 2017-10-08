@@ -31,5 +31,15 @@
     
     <a href="url">Forgot your password?</a>
 </div>
+
+<script>
+    [...document.querySelectorAll('table tr .remove')]
+    .forEach(a=>a.onclick=event=>{
+        if (!confirm('Confirma?')){
+            event.preventDefault();
+        };
+    });
+    setTimeout(()=>document.querySelector('.msg').remove(),4000);
+</script>
     
 <?php require_once "html-estrutura/rodape.php"; ?>
