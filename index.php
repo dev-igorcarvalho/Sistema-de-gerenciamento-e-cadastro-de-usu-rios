@@ -17,15 +17,24 @@ $usuarioService = new UsuarioService();
 ?>
 
 <?php 
-    if(array_key_exists('login', $_REQUEST)){
-        if($_REQUEST['login']==true){
+    if(array_key_exists('falhaDeSeguranca', $_REQUEST)){
+        if($_REQUEST['falhaDeSeguranca']==true){
 ?>
-    <p class="text-center alert alert-success msg">Olá, <?=$usuarioService->usuarioLogado ();?> seja bem vindo</p>
+    <p class="text-center alert alert-danger msg">Acesso não autorizado</p>
 <?php
         }
     }
 ?>
 
+<?php 
+    if(array_key_exists('login', $_REQUEST)){
+        if($_REQUEST['login']==false){
+?>
+    <p class="text-center alert alert-danger msg">Nome do usuário ou senha invalidos</p>
+<?php
+        }
+    }
+?>
 
 <div class="jumbotron">
 
