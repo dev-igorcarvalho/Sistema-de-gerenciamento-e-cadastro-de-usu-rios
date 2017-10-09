@@ -25,6 +25,8 @@ class UsuarioService {
 
     function deslogaUsuario() {
         session_destroy();
+        header('location:index.php');
+
     }
 
 }
