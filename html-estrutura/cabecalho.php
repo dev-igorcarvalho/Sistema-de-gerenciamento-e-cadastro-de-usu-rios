@@ -33,7 +33,7 @@
 
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="paginaInicial.php">link de teste</a>
+                    <a href="paginaInicial.php">Pagina protegida</a>
                 </li>
             </ul>
 

@@ -39,10 +39,10 @@ class UsuarioDao
 
     
     function verifica($nome, $senha) {
-        $usuario = mysqli_real_escape_string($this->conexao, $nome);
+        $nome = mysqli_real_escape_string($this->conexao, $nome);
         $senha = mysqli_real_escape_string($this->conexao, $senha);
         $senha = md5($senha);
-        $query = "SELECT * FROM usuarios WHERE nome='{$usuario}' AND senha='{$senha}'";
+        $query = "SELECT * FROM usuarios WHERE nome='{$nome}' AND senha='{$senha}'";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
         return mysqli_fetch_assoc($resultado);
