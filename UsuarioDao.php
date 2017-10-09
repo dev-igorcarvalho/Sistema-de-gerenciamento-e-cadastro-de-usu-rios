@@ -38,9 +38,9 @@ class UsuarioDao
     
 
     
-    function busca($usuario, $senha) { // ainda n está em uso
-        $usuario = mysqli_real_escape_string($this->conexao, $usuario);
-        $senha = mysqli_real_escape_string($this->conexao, $usuario);
+    function verifica($nome, $senha) {
+        $usuario = mysqli_real_escape_string($this->conexao, $nome);
+        $senha = mysqli_real_escape_string($this->conexao, $senha);
         $senha = md5($senha);
         $query = "SELECT * FROM usuarios WHERE nome='{$usuario}' AND senha='{$senha}'";
         $resultado = mysqli_query($this->conexao, $query);
