@@ -1,6 +1,23 @@
-<?php 
-require_once "html-estrutura/cabecalho.php"; 
+<?php
+require_once "conecta.php";
+require_once "autoload.php";
 
+$formAction = "cadastraUsuario.php";
+$ehAlteracao = false;
+
+if (isset($_REQUEST['atualizaUsuario'])) {
+
+    $usuarioService = new UsuarioService();
+    $usuarioService->verificaUsuario();
+    
+    $formAction = "atualizaUsuario.php";
+    $ehAlteracao = true;
+    $id = ($_REQUEST['atualizaUsuario']);
+    }
+?>
+
+<?php 
+    require_once "html-estrutura/cabecalho.php"; 
 ?>
 
 <?php 
@@ -43,13 +60,12 @@ require_once "html-estrutura/cabecalho.php";
 ?>
 
 
-
 <div class="jumbotron">
 
-<h2>Cadastro:</h2>
+<h2><?=$ehAlteracao?"Atualizando cadastro:":"Novo cadastro:"?></h2>
 
 <br>
-    <form action="cadastraUsuario.php" method="POST">
+    <form action="<?=$formAction?>" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
             <input class="form-control" type="text" name="nome" value="">
@@ -65,10 +81,14 @@ require_once "html-estrutura/cabecalho.php";
             <input class="form-control" type="email" name="email">
         </div>
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <input type="hidden" name="id" value="<?=$id?>">
+
+        <button type="submit" class="btn btn-primary"><?=$ehAlteracao?"Atualizar":"Cadastrar"?></button>
+    
     </form>
     <br>
-    
+    <a href="paginaInicial.php"><?=$ehAlteracao?"Voltar":""?></a>
+
 </div>
 
 <script>

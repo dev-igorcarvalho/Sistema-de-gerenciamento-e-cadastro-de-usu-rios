@@ -13,8 +13,8 @@ $usuarioDao = new UsuarioDao($conexao);
 $usuarioService = new UsuarioService();
 
 if ($usuarioDao->verifica($usuario)){
-        $usuarioService->logaUsuario($usuario);
-        header('location:paginaInicial.php?login=1');   
+    $usuarioService->logaUsuario($usuario);
+    header('location:paginaInicial.php?login=1');   
 } else {
     header('location:index.php?login=0');
 }

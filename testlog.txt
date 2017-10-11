@@ -1,4 +1,4 @@
 
 $fp = fopen('testlog.txt','a');
         fwrite($fp, "Seu nome de usuario é '{$dados[0]}' e sua nova senha é '{$dados[1]}'");
-        fclose($fp)
+        fclose($fp)'43'

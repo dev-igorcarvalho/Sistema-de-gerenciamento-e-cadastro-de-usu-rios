@@ -17,6 +17,16 @@ $usuarioService = new UsuarioService();
 ?>
 
 <?php 
+    if(array_key_exists('atualizado', $_REQUEST)){
+        if($_REQUEST['atualizado']==true){
+?>
+    <p class="text-center alert alert-success msg">Usuário atualizado com sucesso</p>
+<?php
+        }
+    }
+?>
+
+<?php 
     if(array_key_exists('falhaDeSeguranca', $_REQUEST)){
         if($_REQUEST['falhaDeSeguranca']==true){
 ?>

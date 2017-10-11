@@ -35,8 +35,18 @@ class UsuarioDao
         error_log(mysqli_error($this->conexao));
         return $resultado;
     }
-    
 
+    function atualiza($usuario) {
+        $nome = mysqli_real_escape_string($this->conexao, $usuario->getNome());
+        $senha = mysqli_real_escape_string($this->conexao, $usuario->getSenha());
+        $senhaMd5 = md5($senha);
+        $email = mysqli_real_escape_string($this->conexao, $usuario->getEmail());
+        $query = "UPDATE usuarios SET nome='{$nome}', senha='{$senhaMd5}', email='{$email}' WHERE id={$usuario->getId()}";
+        $resultado = mysqli_query($this->conexao, $query);
+        error_log(mysqli_error($this->conexao));
+        return $resultado;
+    }
+    
     
     function verifica($usuario) {
         $nome = mysqli_real_escape_string($this->conexao, $usuario->getNome());
@@ -70,6 +80,40 @@ class UsuarioDao
             array_push($dados, $nome, $senha);
         }
        
+        $cabecalho = 'GamerHub';
+        $assunto = 'Recuperação de login';  
+        $mensagem = "Seu nome de usuario é '{$dados[0]}' e sua nova senha é {$dados[1]}'";
+        $destinatario = $usuario->getEmail();
+        mail($destinatario, $assunto, $mensagem, $cabecalho);
+
+    }
+
+    function buscaId($usuario) {
+
+        $query = "SELECT * FROM usuarios WHERE nome='{$usuario->getNome()}'";
+        $resultado = mysqli_query($this->conexao, $query);
+        error_log(mysqli_error($this->conexao));
+
+        foreach ($array = mysqli_fetch_assoc($resultado) as $item){
+            $usuario->setId($array['id']);
+        }
+
+        return $usuario;
+    }
+
+    function busca($usuario) {
+
+        $dados = array();
+        $query = "SELECT * FROM usuarios WHERE email='{$usuario->getEmail()}'";
+        $resultado = mysqli_query($this->conexao, $query);
+        error_log(mysqli_error($this->conexao));
+        
+        foreach ($array = mysqli_fetch_assoc($resultado) as $item){
+            $nome = $array['nome'];
+            $senha = "Ns" . date("Ymd");
+            array_push($dados, $nome, $senha);
+        }
+        
         $cabecalho = 'GamerHub';
         $assunto = 'Recuperação de login';  
         $mensagem = "Seu nome de usuario é '{$dados[0]}' e sua nova senha é {$dados[1]}'";
