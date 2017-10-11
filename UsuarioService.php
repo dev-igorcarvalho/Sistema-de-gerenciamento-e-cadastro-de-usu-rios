@@ -4,8 +4,8 @@ session_start();
 
 class UsuarioService {
 
-    function logaUsuario($nome) {
-        $_SESSION['usuario_logado'] = $nome;
+    function logaUsuario($usuario) {
+        $_SESSION['usuario_logado'] = $usuario->getNome();
     }
 
     function usuarioLogado () {

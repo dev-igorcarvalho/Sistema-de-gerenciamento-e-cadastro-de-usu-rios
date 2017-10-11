@@ -55,7 +55,7 @@ $usuarioService = new UsuarioService();
     </form>
     <br>
     <p><a href="cadastro.php">Cadastre-se</a></p> 
-    <a href="url">Esqueceu a senha?</a>
+    <a href="esqueceuSenha.php">Esqueceu a senha?</a>
 </div>
 
 

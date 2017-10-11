@@ -1,9 +1,6 @@
 <?php 
 require_once "html-estrutura/cabecalho.php"; 
 
-$usuario = $_REQUEST['usuario'];
-$senha = $_REQUEST['senha'];
-$email = $_REQUEST['email'];
 ?>
 
 <?php 
