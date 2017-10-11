@@ -11,7 +11,7 @@ $usuario->setEmail($_REQUEST['email']);
 if (!$usuario->getEmail() == "") {
 
     if ($usuarioDao->existeEmail($usuario)){
-        $usuarioDao->resetaSenha($usuario);
+        $usuarioDao->recuperaDados($usuario);
         header("location:esqueceuSenha.php?enviado=1");
     } else {
         header("location:esqueceuSenha.php?enviado=0");

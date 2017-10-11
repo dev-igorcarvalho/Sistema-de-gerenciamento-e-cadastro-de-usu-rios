@@ -49,17 +49,33 @@ class UsuarioDao
     }
 
     function resetaSenha($usuario) {
-        $novaSenha = rand();
+        $novaSenha = md5("Ns" . date("Ymd"));
         $query = "UPDATE usuarios SET senha='{$novaSenha}' WHERE email='{$usuario->getEmail()}'";
         $resultado = mysqli_query($this->conexao, $query);   
         error_log(mysqli_error($this->conexao));
-        return $resultado;
+    }
 
+    function recuperaDados($usuario) {
+
+        $this->resetaSenha($usuario);
+
+        $dados = array();
+        $query = "SELECT * FROM usuarios WHERE email='{$usuario->getEmail()}'";
+        $resultado = mysqli_query($this->conexao, $query);
+        error_log(mysqli_error($this->conexao));
+        
+        foreach ($array = mysqli_fetch_assoc($resultado) as $item){
+            $nome = $array['nome'];
+            $senha = "Ns" . date("Ymd");
+            array_push($dados, $nome, $senha);
+        }
+       
         $cabecalho = 'GamerHub';
-        $assunto = 'Recuperação de login';
-        $mensagem = "Sua nova senha é '{$novaSenha}'";
+        $assunto = 'Recuperação de login';  
+        $mensagem = "Seu nome de usuario é '{$dados[0]}' e sua nova senha é {$dados[1]}'";
         $destinatario = $usuario->getEmail();
         mail($destinatario, $assunto, $mensagem, $cabecalho);
+
     }
 
 }
