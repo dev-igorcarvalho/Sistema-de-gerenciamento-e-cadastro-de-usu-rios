@@ -59,8 +59,9 @@ class UsuarioDao
     }
 
     function resetaSenha($usuario) {
+        $email = mysqli_real_escape_string($this->conexao, $usuario->getEmail());
         $novaSenha = md5("Ns" . date("Ymd"));
-        $query = "UPDATE usuarios SET senha='{$novaSenha}' WHERE email='{$usuario->getEmail()}'";
+        $query = "UPDATE usuarios SET senha='{$novaSenha}' WHERE email='{$email}'";
         $resultado = mysqli_query($this->conexao, $query);   
         error_log(mysqli_error($this->conexao));
     }
@@ -70,7 +71,8 @@ class UsuarioDao
         $this->resetaSenha($usuario);
 
         $dados = array();
-        $query = "SELECT * FROM usuarios WHERE email='{$usuario->getEmail()}'";
+        $email = mysqli_real_escape_string($this->conexao, $usuario->getEmail());
+        $query = "SELECT * FROM usuarios WHERE email='{$email}'";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
         
@@ -83,14 +85,14 @@ class UsuarioDao
         $cabecalho = 'GamerHub';
         $assunto = 'Recuperação de login';  
         $mensagem = "Seu nome de usuario é '{$dados[0]}' e sua nova senha é {$dados[1]}'";
-        $destinatario = $usuario->getEmail();
+        $destinatario = $email;
         mail($destinatario, $assunto, $mensagem, $cabecalho);
 
     }
 
     function buscaId($usuario) {
-
-        $query = "SELECT * FROM usuarios WHERE nome='{$usuario->getNome()}'";
+        $nome = mysqli_real_escape_string($this->conexao, $usuario->getNome());
+        $query = "SELECT * FROM usuarios WHERE nome='{$nome}'";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
 
@@ -102,8 +104,8 @@ class UsuarioDao
     }
 
     function buscaUsuarioAntigo($id) {
-
-        $query = "SELECT * FROM usuarios WHERE id={$id}";
+        $idSeguro = mysqli_real_escape_string($this->conexao, $id);
+        $query = "SELECT * FROM usuarios WHERE id={$idSeguro}";
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
 
