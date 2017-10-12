@@ -36,8 +36,8 @@ $usuarioDao = new UsuarioDao($conexao);
     <div class="col-xs-3 col-md-3 col-md-offset-3 col-xs-offset-3 text-center alert alert-success">
         <p>Place Holder</p>
     </div>
-    <div class="col-xs-3 col-md-3 text-center alert alert-warning">
-        <p>Place Holder</p>
+    <div class="col-xs-3 col-md-3 text-center alert alert-danger">
+    <a class="alert-danger" href="remover.php?removeUsuario=<?=$usuario->getId()?>">Apagar cadastro</a>
     </div>
 </div>
 
@@ -45,8 +45,8 @@ $usuarioDao = new UsuarioDao($conexao);
     <div class="col-xs-3 col-md-3 col-md-offset-3 col-xs-offset-3 text-center alert alert-info">
         <a class="alert-info" href="recadastro.php?atualizaUsuario=<?=$usuario->getId()?>">Atualizar cadastro</a>
     </div>
-    <div class="col-xs-3 col-md-3 text-center alert alert-danger">
-        <a class="alert-danger" href="logout.php">Deslogar</a>
+    <div class="col-xs-3 col-md-3 text-center alert alert-warning">
+        <a class="alert-warning" href="logout.php">Deslogar</a>
     </div>
 </div>
 

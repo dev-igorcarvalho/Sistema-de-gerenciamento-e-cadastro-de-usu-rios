@@ -22,7 +22,6 @@ class UsuarioDao
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
         return mysqli_fetch_assoc($resultado);
-       
     }
 
     function cadastra($usuario) {
@@ -45,6 +44,14 @@ class UsuarioDao
         $resultado = mysqli_query($this->conexao, $query);
         error_log(mysqli_error($this->conexao));
         return $resultado;
+    }
+
+    function removeUsuario($id){
+        $idSeguro = mysqli_real_escape_string($this->conexao, $id);
+        $query = "DELETE FROM usuarios WHERE id={$idSeguro}";
+        $result = mysqli_query($this->conexao, $query);
+        error_log(mysqli_error($this->conexao));
+        return $result;
     }
     
     
