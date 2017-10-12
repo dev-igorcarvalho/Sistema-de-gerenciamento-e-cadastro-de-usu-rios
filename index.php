@@ -46,6 +46,16 @@ $usuarioService = new UsuarioService();
     }
 ?>
 
+<?php 
+    if(array_key_exists('recuperaSenha', $_REQUEST)){
+        if($_REQUEST['recuperaSenha']==true){
+?>
+    <p class="text-center alert alert-success msg">Sua nova senha foi enviada para o email cadastrado</p>
+<?php
+        }
+    }
+?>
+
 <div class="jumbotron">
 
 <h2>Login:</h2>
@@ -54,7 +64,7 @@ $usuarioService = new UsuarioService();
     <form action="login.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="nome">
+            <input class="form-control" type="text" name="nome" value = "<?=$_REQUEST['nome']?>">
         </div>    
 
         <div class="form-group">

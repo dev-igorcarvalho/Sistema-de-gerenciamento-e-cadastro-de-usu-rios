@@ -6,20 +6,9 @@ $usuarioService = new UsuarioService();
 
 <?php require_once "html-estrutura/cabecalho.php"; ?>
 
-
 <?php 
-    if(array_key_exists('enviado', $_REQUEST)){
-        if($_REQUEST['enviado']==true){
-?>
-    <p class="text-center alert alert-success msg">Sua nova senha foi enviada para o email cadastrado</p>
-<?php
-        }
-    }
-?>
-
-<?php 
-    if(array_key_exists('enviado', $_REQUEST)){
-        if($_REQUEST['enviado']==false){
+    if(array_key_exists('recuperaSenha', $_REQUEST)){
+        if($_REQUEST['recuperaSenha']==false){
 ?>
     <p class="text-center alert alert-danger msg">O email fornecido não existe em nosso cadastro</p>
 <?php

@@ -43,7 +43,7 @@ $usuarioDao = new UsuarioDao($conexao);
 
 <div class="row">
     <div class="col-xs-3 col-md-3 col-md-offset-3 col-xs-offset-3 text-center alert alert-info">
-        <a class="alert-info" href="cadastro.php?atualizaUsuario=<?=$usuario->getId()?>">Atualizar cadastro</a>
+        <a class="alert-info" href="recadastro.php?atualizaUsuario=<?=$usuario->getId()?>">Atualizar cadastro</a>
     </div>
     <div class="col-xs-3 col-md-3 text-center alert alert-danger">
         <a class="alert-danger" href="logout.php">Deslogar</a>

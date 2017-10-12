@@ -1,6 +1,17 @@
 <?php
 require_once "conecta.php";
 require_once "autoload.php";
+
+if (isset($_REQUEST['atualizaUsuario'])) {
+
+    $usuarioService = new UsuarioService();
+    $usuarioService->verificaUsuario();
+    $id = ($_REQUEST['atualizaUsuario']);
+    }
+
+    $usuarioDao = new UsuarioDao($conexao);
+    
+    $usuarioAntigo = $usuarioDao->buscaUsuarioAntigo($id);
 ?>
 
 <?php 
@@ -49,13 +60,13 @@ require_once "autoload.php";
 
 <div class="jumbotron">
 
-<h2>Novo cadastro</h2>
+<h2>Atualizando cadastro:</h2>
 
 <br>
-    <form action="cadastraUsuario.php" method="POST">
+    <form action="atualizaUsuario.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="nome" value="<?=$_REQUEST['nome']?>">
+            <input class="form-control" type="text" name="nome" value="<?=$usuarioAntigo[0]?>">
         </div>    
 
         <div class="form-group">
@@ -65,12 +76,17 @@ require_once "autoload.php";
 
         <div class="form-group">
             <label for="">Email:</label>
-            <input class="form-control" type="email" name="email" valeu = "<?=$_REQUEST['email']?>">
+            <input class="form-control" type="email" name="email"value="<?=$usuarioAntigo[1]?>">
         </div>
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <input type="hidden" name="id" value="<?=$id?>">
+
+        <button type="submit" class="btn btn-primary">Atualizar</button>
     
     </form>
+    <br>
+    <a href="paginaInicial.php">Voltar</a>
+
 </div>
 
 <script>

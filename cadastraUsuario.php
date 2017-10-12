@@ -17,9 +17,9 @@ if (($usuario->getNome() == null) || ($usuario->getEmail() == null) || ($usuario
     if ($usuarioDao->existeUsuario($usuario) and $usuarioDao->existeEmail($usuario)){
         header('location:cadastro.php?cadastrado=ambos');
     } elseif ($usuarioDao->existeUsuario($usuario)) {
-        header('location:cadastro.php?cadastrado=usuarioExistente');
+        header("location:cadastro.php?cadastrado=usuarioExistente&email={$_REQUEST['email']}");
     } elseif ($usuarioDao->existeEmail($usuario)) {
-        header('location:cadastro.php?cadastrado=emailExistente');
+        header("location:cadastro.php?cadastrado=emailExistente&nome={$_REQUEST['nome']}");
     } else {
         $usuarioDao->cadastra($usuario);
         header('location:index.php?cadastrado=1');

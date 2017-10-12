@@ -12,9 +12,9 @@ if (!$usuario->getEmail() == "") {
 
     if ($usuarioDao->existeEmail($usuario)){
         $usuarioDao->recuperaDados($usuario);
-        header("location:esqueceuSenha.php?enviado=1");
+        header("location:index.php?recuperaSenha=1");
     } else {
-        header("location:esqueceuSenha.php?enviado=0");
+        header("location:esqueceuSenha.php?recuperaSenha=0");
     }
 
 } else {
