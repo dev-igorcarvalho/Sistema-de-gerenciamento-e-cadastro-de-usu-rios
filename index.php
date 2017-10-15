@@ -1,6 +1,12 @@
 <?php 
 require_once "autoload.php";
 $usuarioService = new UsuarioService();
+
+if(isset($_REQUEST['nome'])){   
+    $nome = $_REQUEST['nome'];
+} else {
+    $nome = null;
+}
 ?>
 
 
@@ -64,7 +70,7 @@ $usuarioService = new UsuarioService();
     <form action="login.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="nome" value = "<?=$_REQUEST['nome']?>">
+            <input class="form-control" type="text" name="nome" value = "<?=$nome?>">
         </div>    
 
         <div class="form-group">

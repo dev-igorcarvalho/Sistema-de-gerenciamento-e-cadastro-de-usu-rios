@@ -9,8 +9,8 @@ $usuarioDao = new UsuarioDao($conexao);
 ?>
 
 <?php
-    if($usuarioService->usuarioLogado()){
-        $usuario->setNome($_SESSION['usuario_logado']);
+    if($usuarioService->usuarioEstaLogado()){
+        $usuario->setNome($usuarioService->usuarioLogado());
         $usuarioDao->buscaID($usuario);
     }
 ?>
@@ -23,7 +23,7 @@ $usuarioDao = new UsuarioDao($conexao);
 ?>
     <div class="row">
         <div class="col-xs-6 col-md-6 col-md-offset-3 col-xs-offset-3 text-center alert alert-info">
-            <p class="text-center">Olá, <?=$usuarioService->usuarioLogado ();?> seja bem vindo</p>
+            <p class="text-center">Olá, <?=$usuario->getNome();?> seja bem vindo</p>
         </div>
     </div>
 

@@ -12,7 +12,7 @@ $usuario->setEmail($_REQUEST['email']);
 $usuarioDao = new UsuarioDao($conexao);
 
 if (($usuario->getNome() == null) || ($usuario->getEmail() == null) || ($usuario->getSenha() == null)) {
-    header('location:cadastro.php?campoEmBranco=1');
+    header("location:cadastro.php?campoEmBranco=1&email={$_REQUEST['email']}&nome={$_REQUEST['nome']}");
 } else {
     if ($usuarioDao->existeUsuario($usuario) and $usuarioDao->existeEmail($usuario)){
         header('location:cadastro.php?cadastrado=ambos');
