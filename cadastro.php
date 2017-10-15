@@ -65,7 +65,7 @@ require_once "autoload.php";
 
         <div class="form-group">
             <label for="">Email:</label>
-            <input class="form-control" type="email" name="email" valeu = "<?=$_REQUEST['email']?>">
+            <input class="form-control" type="email" name="email" value = "<?=$_REQUEST['email']?>">
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
