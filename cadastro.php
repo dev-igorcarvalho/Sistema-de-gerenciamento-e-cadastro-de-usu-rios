@@ -1,11 +1,26 @@
 <?php
 require_once "conecta.php";
 require_once "autoload.php";
+
+if(isset($_REQUEST['nome'])) {   
+    $nome = $_REQUEST['nome'];
+} else {
+    $nome = null;
+}
+
+if(isset($_REQUEST['email'])){   
+    $email = $_REQUEST['email'];
+} else {
+    $email = null;
+}
+
 ?>
 
 <?php 
     require_once "html-estrutura/cabecalho.php"; 
 ?>
+
+
 
 <?php 
     if(array_key_exists('campoEmBranco', $_REQUEST)){
@@ -55,7 +70,7 @@ require_once "autoload.php";
     <form action="cadastraUsuario.php" method="POST">
         <div class="form-group">
             <label for="">Usuário:</label>
-            <input class="form-control" type="text" name="nome" value="<?=$_REQUEST['nome']?>">
+            <input class="form-control" type="text" name="nome" value="<?=$nome?>">
         </div>    
 
         <div class="form-group">
@@ -65,7 +80,7 @@ require_once "autoload.php";
 
         <div class="form-group">
             <label for="">Email:</label>
-            <input class="form-control" type="email" name="email" value = "<?=$_REQUEST['email']?>">
+            <input class="form-control" type="email" name="email" value = "<?=$email?>">
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
